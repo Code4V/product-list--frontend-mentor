@@ -5,7 +5,7 @@ layout: layout.html
 {% for product in collections.products %}
 <div class="product">
   <div class="product__image">
-    <img src="{% dataCascadeImage product.image.desktop, "product.name" %}" alt="">
+    <img src="{{ product.image.desktop }}" alt="">
   </div>
   <div class="product__body">
     <p>

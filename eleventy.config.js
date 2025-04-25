@@ -1,32 +1,25 @@
 const path = require("node:path");
 const Image = require("@11ty/eleventy-img");
+const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
+
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addDataExtension("png,jpeg,jpg", {
-		read: false, // Don’t read the input file, argument is now a file path
-		parser: async (imagePath) => {
-			let stats = await Image(imagePath, {
-				widths: ["auto"],
-				formats: ["avif", "webp", "jpg"],
-				outputDir: path.join(eleventyConfig.dir.output, "img", "built"),
-			});
+ 
+	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+		// output image formats
+		formats: ["avif", "webp", "jpeg", "jpg"],
 
-			return {
-				image: {
-					stats,
-				},
-			};
+		// output image widths
+		widths: ["auto"],
+
+		// optional, attributes assigned on <img> nodes override these values
+		htmlOptions: {
+			imgAttributes: {
+				loading: "lazy",
+				decoding: "async",
+			},
+			pictureAttributes: {}
 		},
-	});
-
-  eleventyConfig.addShortcode("dataCascadeImage", (stats, alt, sizes) => {
-		let imageAttributes = {
-			alt,
-			sizes,
-			loading: "lazy",
-			decoding: "async",
-		};
-		return Image.generateHTML(stats, imageAttributes);
 	});
 
 
@@ -35,4 +28,10 @@ module.exports = function (eleventyConfig) {
     return allProducts;
   })
 
+	return {
+		dir: {
+			input: "src",
+			output: "public"
+		}
+	}
 }
