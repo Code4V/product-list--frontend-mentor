@@ -1,30 +1,30 @@
 ---
+title: c4v.Home
 layout: layout.njk
+elentyImport: 
+  collections: ["products"]
 ---
 
-{% for product in collections.products %}
-
-
-<div class="product">
-  <div class="product__image">
-    <img src="{{ product.image.desktop }}" alt="">
+{%- for product in collections.products -%}
+  <div class="product">
+    <div class="product__image">
+      <img src="{{ product.data.desktop }}" alt="">
+    </div>
+    <div class="product__body">
+      <p>
+        {{ product.data.category }}
+      </p>
+      <p>
+        {{ product.data.name }}
+      </p>
+      <p>
+        {{ product.data.price }}
+      </p>
+    </div>
+    <div class="product__footer">
+      <button>
+        Add To Cart
+      </button>
+    </div>
   </div>
-  <div class="product__body">
-    <p>
-      {{ product.category }}
-    </p>
-    <p>
-      {{ product.name }}
-    </p>
-    <p>
-      {{ product.price }}
-    </p>
-  </div>
-  <div class="product__footer">
-    <button>
-      Add To Cart
-    </button>
-  </div>
-</div>
-
-{% endfor %}
+{%- endfor -%}

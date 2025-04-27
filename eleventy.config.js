@@ -15,11 +15,6 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addPassthroughCopy("src/assets");
 
-  eleventyConfig.addCollection("products", (collectionsApi) => {
-    const allProducts = collectionsApi.getAll()[0].data.products;
-    return allProducts;
-  })
-
 	return {
 		dir: {
 			input: "src",
