@@ -1,8 +1,10 @@
 ---
-layout: layout.html
+layout: layout.njk
 ---
 
 {% for product in collections.products %}
+
+
 <div class="product">
   <div class="product__image">
     <img src="{{ product.image.desktop }}" alt="">
@@ -24,4 +26,5 @@ layout: layout.html
     </button>
   </div>
 </div>
+
 {% endfor %}
