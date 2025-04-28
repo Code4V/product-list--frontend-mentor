@@ -6,7 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/style/style.css">
   <title>{{ title }}</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -16,11 +16,18 @@
   </style>
 </head>
 <body>
-  {{ content | safe }}
+  <div class="product-grid">
+    <div class="product-grid__listing">
+      {{ content | safe }}
+    </div>
+    <div class="product-grid__cart">
+      Your Cart (<!-- Quantity -->)
+      Your added items will appear here
 
-  Your Cart (<!-- Quantity -->)
+    </div>
+  </div>
 
-  Your added items will appear here
+
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 

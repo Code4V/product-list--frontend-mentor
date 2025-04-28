@@ -1,4 +1,6 @@
 const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
+const path = require("node:path");
+const sass = require("sass");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
@@ -13,7 +15,30 @@ module.exports = function (eleventyConfig) {
 		},
 });
 
-	eleventyConfig.addPassthroughCopy("src/assets");
+	// eleventyConfig.addPassthroughCopy("src/assets");
+
+	eleventyConfig.addExtension("scss", {
+		outputFileExtension: "css",
+		useLayouts: false,
+		compile: async function (inputContent, inputPath) {
+			let parsed = path.parse(inputPath);
+			
+			if (parsed.name.startsWith("_")) { return; }
+			let result = sass.compileString(inputContent, {
+				loadPaths: [
+					parsed.dir || ".", 
+					this.config.dir.includes,
+				]
+			});
+
+			this.addDependencies(inputPath, result.loadedUrls);
+
+			return async (data) => {
+				return result.css;
+			}
+		}
+
+	})
 
 	return {
 		dir: {
