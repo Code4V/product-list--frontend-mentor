@@ -6,3 +6,7 @@
 *, *::after, *::before {
   font-family: "Red Hat";
 }
+
+body {
+  background-color: var(--rose_100);
+}

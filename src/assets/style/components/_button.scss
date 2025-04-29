@@ -1,6 +1,12 @@
 button {
+  display: flex;
+
+  align-items: center;
+  font-weight: 500;
   background-color: var(--primary);
-  padding-inline: 16px;
-  padding-block: 4px;
+  padding-inline: 24px;
+  padding-block: 12px;
   border: 0;
+
+  border-radius: 32px;
 }

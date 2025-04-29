@@ -40,6 +40,10 @@ module.exports = function (eleventyConfig) {
 
 	})
 
+	eleventyConfig.addFilter("preserveDecimal", function (number) {
+		return number.toFixed(2).toString();
+	})
+
 	return {
 		dir: {
 			input: "src",

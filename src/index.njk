@@ -6,25 +6,31 @@ elentyImport:
 ---
 
 {%- for product in collections.products -%}
+<div class="listing--product">
   <div class="product">
     <div class="product__image">
       <img src="{{ product.data.desktop }}" alt="">
+
+      <div class="product__action product__action--add-to-cart">
+        <button>
+          <img src="/assets/images/icon-add-to-cart.svg" alt="">
+          Add To Cart
+        </button>
+      </div>
     </div>
     <div class="product__body">
-      <p>
+      <p class="product__body--category">
         {{ product.data.category }}
       </p>
-      <p>
+      <p class="product__body--name">
         {{ product.data.name }}
       </p>
-      <p>
-        {{ product.data.price }}
+      <p class="product__body--price">
+        ${{ product.data.price | preserveDecimal }}
       </p>
     </div>
     <div class="product__footer">
-      <button>
-        Add To Cart
-      </button>
     </div>
   </div>
+</div>
 {%- endfor -%}

@@ -1,0 +1,17 @@
+.listing {
+  margin-inline: auto;
+
+  &--product {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 512px) {
+  .listing {
+
+    &--product {
+      grid-column: span 2;
+    }
+  }
+
+}

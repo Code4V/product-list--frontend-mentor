@@ -42,3 +42,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+img, picture {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+}
